@@ -11,11 +11,14 @@ const authRoutes = require('./routes/auth');
 const gameRoutes = require('./routes/game');
 const leaderboardRoutes = require('./routes/leaderboard');
 
+// Import CORS configuration
+const corsOptions = require('./config/corsOptions');
+
 // Initialize express app
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Route middlewares
@@ -32,8 +35,14 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/memory-game';
 
+// Connection options for MongoDB
+const mongooseOptions = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
+
 mongoose
-  .connect(MONGO_URI)
+  .connect(MONGO_URI, mongooseOptions)
   .then(() => {
     console.log('Connected to MongoDB');
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
