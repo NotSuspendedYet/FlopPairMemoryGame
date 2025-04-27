@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { ReactComponent } from '../simplifyTypes';
 
-const LoginPage: React.FC = () => {
+function LoginPage(): ReactComponent {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -100,6 +101,6 @@ const LoginPage: React.FC = () => {
       </div>
     </div>
   );
-};
+}
 
 export default LoginPage; 

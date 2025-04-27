@@ -1,14 +1,24 @@
 declare module 'react' {
   export interface ReactNode {}
-  export interface FC<P = {}> {
-    (props: P): JSX.Element | null;
+  
+  // Add ReactElement interface with generic parameters for better typing
+  export interface ReactElement<P = any, T extends string | JSXElementConstructor<any> = string | JSXElementConstructor<any>> {
+    type: T;
+    props: P;
+    key: any;
   }
   
-  // Add ReactElement interface
-  export interface ReactElement {
-    type: any;
-    props: any;
-    key: any;
+  // Add JSXElementConstructor interface
+  export interface JSXElementConstructor<P> {
+    (props: P): ReactElement<any, any> | null;
+  }
+
+  // Fix FC definition to properly handle JSX.Element
+  export interface FC<P = {}> {
+    (props: P): ReactElement<P> | null;
+    displayName?: string;
+    defaultProps?: Partial<P>;
+    propTypes?: any;
   }
 
   // Add missing React exports
@@ -22,10 +32,10 @@ declare module 'react' {
     Consumer: Consumer<T>;
   }
   export interface Provider<T> {
-    new (props: { value: T; children?: ReactNode }): JSX.Element;
+    new (props: { value: T; children?: ReactNode }): ReactElement;
   }
   export interface Consumer<T> {
-    new (props: { children: (value: T) => ReactNode }): JSX.Element;
+    new (props: { children: (value: T) => ReactNode }): ReactElement;
   }
   
   // Add StrictMode
@@ -60,7 +70,7 @@ declare module 'react/jsx-runtime' {
     interface IntrinsicElements {
       [elemName: string]: any;
     }
-    interface Element {}
+    interface Element extends React.ReactElement {}
   }
   export function jsx(type: any, props: any): JSX.Element;
   export function jsxs(type: any, props: any): JSX.Element;

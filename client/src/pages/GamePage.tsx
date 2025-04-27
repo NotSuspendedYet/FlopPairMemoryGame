@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../hooks/useAuth';
 import Card from '../components/Card';
+import { ReactComponent } from '../simplifyTypes';
 
 // Define card type
 interface Card {
@@ -11,7 +12,7 @@ interface Card {
   isMatched: boolean;
 }
 
-const GamePage: React.FC = () => {
+function GamePage(): ReactComponent {
   const [boardSize, setBoardSize] = useState<'4x4' | '6x6'>('4x4');
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
@@ -291,6 +292,6 @@ const GamePage: React.FC = () => {
       </div>
     </div>
   );
-};
+}
 
 export default GamePage; 

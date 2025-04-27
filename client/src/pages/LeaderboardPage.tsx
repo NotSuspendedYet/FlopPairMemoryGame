@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { ReactComponent } from '../simplifyTypes';
 
 interface LeaderboardEntry {
   _id: string;
@@ -13,7 +14,7 @@ interface LeaderboardEntry {
   completedAt: string;
 }
 
-const LeaderboardPage: React.FC = () => {
+function LeaderboardPage(): ReactComponent {
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [boardSize, setBoardSize] = useState<string>('4x4');
   const [loading, setLoading] = useState<boolean>(true);
@@ -165,6 +166,6 @@ const LeaderboardPage: React.FC = () => {
       </div>
     </div>
   );
-};
+}
 
 export default LeaderboardPage; 

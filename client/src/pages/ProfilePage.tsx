@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../hooks/useAuth';
+import { ReactComponent } from '../simplifyTypes';
 
 interface GameHistory {
   _id: string;
@@ -10,7 +11,7 @@ interface GameHistory {
   completedAt: string;
 }
 
-const ProfilePage: React.FC = () => {
+function ProfilePage(): ReactComponent {
   const [gameHistory, setGameHistory] = useState<GameHistory[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -275,6 +276,6 @@ const ProfilePage: React.FC = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ProfilePage; 

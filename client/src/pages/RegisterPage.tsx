@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { ReactComponent } from '../simplifyTypes';
 
-const RegisterPage: React.FC = () => {
+const RegisterPage: ReactComponent = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',

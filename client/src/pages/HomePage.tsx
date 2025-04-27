@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { ReactComponent } from '../simplifyTypes';
 
-const HomePage: React.FC = () => {
+function HomePage(): ReactComponent {
   const { user } = useAuth();
   
   return (
@@ -78,6 +79,6 @@ const HomePage: React.FC = () => {
       </div>
     </div>
   );
-};
+}
 
 export default HomePage; 

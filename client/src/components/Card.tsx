@@ -1,11 +1,12 @@
 import React from 'react';
 import { CardProps } from './CardTypes';
+import { ReactComponent } from '../simplifyTypes';
 
-const Card: React.FC<CardProps> = ({ id, value, isFlipped, isMatched, onClick }) => {
+function Card({ id, value, isFlipped, isMatched, onClick }: CardProps): ReactComponent {
   return (
     <div 
       className={`card ${isFlipped ? 'flipped' : ''} ${isMatched ? 'matched' : ''}`}
-      onClick={onClick}
+      onClick={() => onClick(id)}
     >
       <div className="card-inner">
         <div className="card-front">
@@ -17,6 +18,6 @@ const Card: React.FC<CardProps> = ({ id, value, isFlipped, isMatched, onClick })
       </div>
     </div>
   );
-};
+}
 
 export default Card; 

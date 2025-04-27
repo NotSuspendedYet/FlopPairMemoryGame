@@ -1,5 +1,5 @@
 declare module 'react-router-dom' {
-  import { ReactNode } from 'react';
+  import { ReactNode, ReactElement } from 'react';
   
   export interface LinkProps {
     to: string;
@@ -13,7 +13,7 @@ declare module 'react-router-dom' {
   // Add missing react-router-dom exports
   export interface RouteProps {
     path?: string;
-    element?: JSX.Element | null;
+    element?: React.ReactElement<any, any> | null;
     children?: React.ReactNode;
   }
 

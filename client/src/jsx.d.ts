@@ -1,6 +1,10 @@
-declare namespace JSX {
-  interface Element {}
-  interface IntrinsicElements {
-    [elemName: string]: any;
+import { ReactElement } from 'react';
+
+declare global {
+  namespace JSX {
+    interface Element extends ReactElement<any, any> {}
+    interface IntrinsicElements {
+      [elemName: string]: any;
+    }
   }
 } 
