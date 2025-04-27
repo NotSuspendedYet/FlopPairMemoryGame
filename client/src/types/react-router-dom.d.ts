@@ -13,7 +13,7 @@ declare module 'react-router-dom' {
   // Add missing react-router-dom exports
   export interface RouteProps {
     path?: string;
-    element?: React.ReactNode;
+    element?: JSX.Element | null;
     children?: React.ReactNode;
   }
 

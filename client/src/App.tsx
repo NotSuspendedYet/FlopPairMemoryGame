@@ -9,10 +9,10 @@ import LeaderboardPage from './pages/LeaderboardPage';
 import ProfilePage from './pages/ProfilePage';
 import { useAuth } from './hooks/useAuth';
 
-const App = () => {
+function App() {
   const { user, loading } = useAuth();
 
-  const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  function ProtectedRoute({ children }: { children: React.ReactNode }) {
     if (loading) {
       return <div className="flex justify-center items-center h-screen">Loading...</div>;
     }
@@ -22,7 +22,7 @@ const App = () => {
     }
     
     return <>{children}</>;
-  };
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -31,15 +31,13 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/game" element={
-            <ProtectedRoute children={<GamePage />}>
-            </ProtectedRoute>
+            <ProtectedRoute children={<GamePage />} />
           } />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
           <Route path="/profile" element={
-            <ProtectedRoute children={<ProfilePage />}>
-            </ProtectedRoute>
+            <ProtectedRoute children={<ProfilePage />} />
           } />
         </Routes>
       </main>
@@ -48,6 +46,6 @@ const App = () => {
       </footer>
     </div>
   );
-};
+}
 
 export default App; 
