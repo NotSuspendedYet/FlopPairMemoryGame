@@ -9,11 +9,10 @@ import LeaderboardPage from './pages/LeaderboardPage';
 import ProfilePage from './pages/ProfilePage';
 import { useAuth } from './hooks/useAuth';
 
-const App: React.FC = () => {
+const App = () => {
   const { user, loading } = useAuth();
 
-  // Protected route component
-  const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     if (loading) {
       return <div className="flex justify-center items-center h-screen">Loading...</div>;
     }

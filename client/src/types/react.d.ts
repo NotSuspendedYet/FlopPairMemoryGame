@@ -3,6 +3,13 @@ declare module 'react' {
   export interface FC<P = {}> {
     (props: P): JSX.Element | null;
   }
+  
+  // Add ReactElement interface
+  export interface ReactElement {
+    type: any;
+    props: any;
+    key: any;
+  }
 
   // Add missing React exports
   export function useState<T>(initialState: T | (() => T)): [T, (newState: T | ((prevState: T) => T)) => void];
