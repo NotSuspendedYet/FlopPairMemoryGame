@@ -42,7 +42,8 @@ export const AuthProvider: ReactComponent = ({ children }: AuthProviderProps) =>
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+  // Make sure we're using the correct API URL - for deployment it should include /api prefix
+  const API_URL = 'https://floppairmemorygame.onrender.com/api';
 
   // Load user data if token exists
   useEffect(() => {
