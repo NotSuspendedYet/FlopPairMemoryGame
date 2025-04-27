@@ -30,7 +30,7 @@ function GamePage(): ReactComponent {
 
   // Set up game timer
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: number;
     
     if (isGameStarted && !isGameOver) {
       interval = setInterval(() => {
