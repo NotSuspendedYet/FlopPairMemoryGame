@@ -36,7 +36,8 @@ const RegisterPage: ReactComponent = () => {
       await register(name, email, password);
       navigate('/');
     } catch (err: any) {
-      setErrorMessage(err.response?.data?.message || 'Registration failed');
+      console.error('Registration submission error:', err);
+      setErrorMessage(err.response?.data?.message || err.message || 'Registration failed');
     } finally {
       setLoading(false);
     }

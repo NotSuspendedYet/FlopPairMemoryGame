@@ -73,14 +73,27 @@ export const AuthProvider: ReactComponent = ({ children }: AuthProviderProps) =>
   // Login function
   const login = async (email: string, password: string) => {
     try {
-      const res = await axios.post(`${API_URL}/auth/login`, { email, password });
+      const res = await axios.post(`${API_URL}/auth/login`, { 
+        email, 
+        password 
+      }, {
+        timeout: 10000 // 10 second timeout
+      });
+      
       const { token } = res.data;
       
       localStorage.setItem('token', token);
       setToken(token);
       setError(null);
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Login failed');
+      console.error('Login error:', err); // Detailed error logging
+      if (err.code === 'ECONNABORTED') {
+        setError('Request timed out. Server might be down or overloaded.');
+      } else if (!err.response) {
+        setError('Network error. Unable to connect to server.');
+      } else {
+        setError(err.response?.data?.message || 'Login failed');
+      }
       throw err;
     }
   };
@@ -92,6 +105,8 @@ export const AuthProvider: ReactComponent = ({ children }: AuthProviderProps) =>
         name,
         email,
         password
+      }, { 
+        timeout: 10000 // 10 second timeout
       });
       
       const { token } = res.data;
@@ -100,7 +115,14 @@ export const AuthProvider: ReactComponent = ({ children }: AuthProviderProps) =>
       setToken(token);
       setError(null);
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Registration failed');
+      console.error('Registration error:', err); // Detailed error logging
+      if (err.code === 'ECONNABORTED') {
+        setError('Request timed out. Server might be down or overloaded.');
+      } else if (!err.response) {
+        setError('Network error. Unable to connect to server.');
+      } else {
+        setError(err.response?.data?.message || 'Registration failed');
+      }
       throw err;
     }
   };
