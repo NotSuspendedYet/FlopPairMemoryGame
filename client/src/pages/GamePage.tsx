@@ -50,6 +50,7 @@ function GamePage(): ReactComponent {
       setIsGameOver(true);
       setIsGameStarted(false);
       
+      // Восстановлено сохранение результатов
       // Save score if user is logged in
       if (user && token) {
         saveGameResult();
@@ -68,6 +69,7 @@ function GamePage(): ReactComponent {
         }
       };
       
+      // Используем правильный URL для API
       await axios.post(`${API_URL}/game/result`, {
         moves,
         time: timer,
@@ -75,7 +77,10 @@ function GamePage(): ReactComponent {
       }, config);
     } catch (err) {
       console.error('Error saving game result:', err);
-      setErrorMessage('Could not save your score');
+      // Показывать ошибку только если пользователь авторизован
+      if (user && token) {
+        setErrorMessage('Could not save your score');
+      }
     } finally {
       setLoading(false);
     }
