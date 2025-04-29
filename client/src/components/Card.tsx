@@ -2,17 +2,18 @@ import React from 'react';
 import './Card.css';
 
 interface CardProps {
+  id: number;
   emoji: string;
   isFlipped: boolean;
   isMatched: boolean;
-  onClick: () => void;
+  onClick: (id: number) => void;
 }
 
-const Card = ({ emoji, isFlipped, isMatched, onClick }: CardProps) => {
+const Card = ({ id, emoji, isFlipped, isMatched, onClick }: CardProps) => {
   const cardClassName = `card ${isFlipped ? 'flipped' : ''} ${isMatched ? 'matched' : ''}`;
 
   return (
-    <div className={cardClassName} onClick={onClick}>
+    <div className={cardClassName} onClick={() => onClick(id)}>
       <div className="card-inner">
         <div className="card-front">
           ?
