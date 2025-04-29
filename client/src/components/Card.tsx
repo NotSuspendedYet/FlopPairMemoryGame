@@ -8,7 +8,7 @@ interface CardProps {
   onClick: () => void;
 }
 
-const Card = ({ emoji, isFlipped, isMatched, onClick }: CardProps): React.ReactNode => {
+const Card = ({ emoji, isFlipped, isMatched, onClick }: CardProps) => {
   const cardClassName = `card ${isFlipped ? 'flipped' : ''} ${isMatched ? 'matched' : ''}`;
 
   return (
