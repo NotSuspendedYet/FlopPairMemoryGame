@@ -17,10 +17,10 @@ const Card = ({ id, emoji, isFlipped, isMatched, onClick }: CardProps) => {
     <div className={cardClassName} onClick={() => onClick(id)}>
       <div className="card-inner">
         <div className="card-front">
-          ?
+          <span className="question-mark">?</span>
         </div>
         <div className="card-back">
-          {emoji}
+          <span className="emoji">{emoji}</span>
         </div>
       </div>
     </div>
