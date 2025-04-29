@@ -14,6 +14,13 @@
 - Сохранение результатов для зарегистрированных пользователей
 - Адаптивный дизайн, работающий на мобильных устройствах
 
+- ![image](https://github.com/user-attachments/assets/6f250d07-fd40-4d3a-a2df-a75f3bea1012)
+
+![image](https://github.com/user-attachments/assets/f84490df-34c9-44e4-8044-63bce6f4b12e)
+
+![image](https://github.com/user-attachments/assets/d94a59c8-523c-4632-a0c4-d4b9e81ba1d0)
+
+
 ### Технологии
 
 #### Фронтенд
