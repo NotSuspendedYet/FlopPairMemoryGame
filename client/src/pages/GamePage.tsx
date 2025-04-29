@@ -248,16 +248,16 @@ function GamePage(): ReactComponent {
         {/* Game board */}
         {cards.length > 0 ? (
           <div className={`grid ${gridColumns} gap-2 md:gap-4`}>
-            {cards.map(card => (
-              <Card
-                key={card.id}
-                id={card.id}
-                value={card.value}
-                isFlipped={card.isFlipped}
-                isMatched={card.isMatched}
-                onClick={handleCardClick}
-              />
-            ))}
+            {cards.map(card => {
+              const cardProps = {
+                id: card.id,
+                emoji: card.value,
+                isFlipped: card.isFlipped,
+                isMatched: card.isMatched,
+                onClick: handleCardClick
+              };
+              return <Card key={card.id} {...cardProps} />;
+            })}
           </div>
         ) : (
           <div className="bg-white p-8 rounded-lg shadow-md text-center">

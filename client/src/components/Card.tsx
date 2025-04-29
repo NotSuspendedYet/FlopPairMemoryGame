@@ -7,6 +7,7 @@ interface CardProps {
   isFlipped: boolean;
   isMatched: boolean;
   onClick: (id: number) => void;
+  key?: number | string;
 }
 
 const Card = ({ id, emoji, isFlipped, isMatched, onClick }: CardProps) => {
