@@ -1,23 +1,28 @@
 import React from 'react';
-import { CardProps } from './CardTypes';
-import { ReactComponent } from '../simplifyTypes';
+import './Card.css';
 
-function Card({ id, value, isFlipped, isMatched, onClick }: CardProps): ReactComponent {
+interface CardProps {
+  emoji: string;
+  isFlipped: boolean;
+  isMatched: boolean;
+  onClick: () => void;
+}
+
+const Card = ({ emoji, isFlipped, isMatched, onClick }: CardProps): React.ReactNode => {
+  const cardClassName = `card ${isFlipped ? 'flipped' : ''} ${isMatched ? 'matched' : ''}`;
+
   return (
-    <div 
-      className={`card ${isFlipped ? 'flipped' : ''} ${isMatched ? 'matched' : ''}`}
-      onClick={() => onClick(id)}
-    >
+    <div className={cardClassName} onClick={onClick}>
       <div className="card-inner">
         <div className="card-front">
           ?
         </div>
         <div className="card-back">
-          {value}
+          {emoji}
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Card; 
